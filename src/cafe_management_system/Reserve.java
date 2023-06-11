@@ -11,6 +11,8 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import model.*;
 import DAO.*;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
@@ -48,10 +50,18 @@ public class Reserve extends javax.swing.JFrame {
     }
     public Reserve() {
         initComponents();
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, 
+        size.height/2 - getHeight()/2);
     }
     public Reserve(String email){
         initComponents();
         this.userEmail = email;
+        Toolkit toolkit = getToolkit();
+        Dimension size = toolkit.getScreenSize();
+        setLocation(size.width/2 - getWidth()/2, 
+        size.height/2 - getHeight()/2);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -389,16 +399,15 @@ public class Reserve extends javax.swing.JFrame {
         ReserveDao.delete(id);
         Delete.setEnabled(false);
         setVisible(false);
-        new Reserve().setVisible(true);
+        new Reserve(userEmail).setVisible(true);
         
     }//GEN-LAST:event_DeleteActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        int a = JOptionPane.showConfirmDialog(null, "Do you really want to Close Application","Select",JOptionPane.YES_NO_OPTION);
-        if(a == 0){
+       
             setVisible(false);
-        }
+       
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void save1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_save1ActionPerformed
@@ -431,7 +440,7 @@ public class Reserve extends javax.swing.JFrame {
         
         ReserveDao.update(reserve);
         setVisible(false);
-        new Reserve().setVisible(true);
+        new Reserve(userEmail).setVisible(true);
     }//GEN-LAST:event_UpdateActionPerformed
 
     private void NameKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NameKeyReleased

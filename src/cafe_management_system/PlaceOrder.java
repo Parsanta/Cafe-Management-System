@@ -558,7 +558,8 @@ public class PlaceOrder extends javax.swing.JFrame {
         BillDao.save(bill);
         
         //Craeting document
-        String path = "C:\\Users\\Satguru Pyari\\Desktop\\bill";
+        //C:\Users\salma\Downloads\bills
+        String path = "C:\\Users\\salma\\Downloads\\bills\\bill";
         com.itextpdf.text.Document doc = new com.itextpdf.text.Document();
         try{
             PdfWriter.getInstance(doc, new FileOutputStream(path + ""+billId+".pdf"));
